@@ -1,0 +1,60 @@
+<div class="account-page">
+  <div class="container">
+    <h1>Mijn account</h1>
+
+    <div class="user-info">
+      <p><strong>Naam:</strong> {{ authService.currentUser()?.name }}</p>
+      <p><strong>E-mail:</strong> {{ authService.currentUser()?.email }}</p>
+    </div>
+
+    <h2>Mijn bestellingen</h2>
+
+    @if (error) {
+      <div class="form-error">{{ error }}</div>
+    }
+
+    @if (isLoading) {
+      <p>Bestellingen laden...</p>
+    } @else if (orders.length === 0) {
+      <p class="no-orders">Je hebt nog geen bestellingen geplaatst.</p>
+    } @else {
+      <div class="orders-list">
+        @for (order of orders; track order.id) {
+          <div class="order-card">
+            <div class="order-header">
+              <span class="order-id">Bestelling #{{ order.id }}</span>
+              <span class="order-date">{{ order.date | date:'dd/MM/yyyy HH:mm' }}</span>
+              <span class="order-status status-{{ order.status }}">{{ statusLabel(order.status) }}</span>
+            </div>
+
+            <div class="order-lines">
+              @for (line of order.orderLines; track line.id) {
+                <div class="order-line">
+                  <span>{{ line.productName }} x{{ line.quantity }}</span>
+                  <span>{{ line.unitPrice * line.quantity | currency:'EUR':'symbol':'1.2-2' }}</span>
+                </div>
+              }
+            </div>
+
+            <div class="order-total">
+              <span>Totaal</span>
+              <span>{{ order.total | currency:'EUR':'symbol':'1.2-2' }}</span>
+            </div>
+
+            @if (canCancel(order)) {
+              <div class="order-actions">
+                <button
+                  type="button"
+                  class="cancel-btn"
+                  [disabled]="cancellingOrderId === order.id"
+                  (click)="cancelOrder(order)">
+                  {{ cancellingOrderId === order.id ? 'Bezig met annuleren...' : 'Bestelling annuleren' }}
+                </button>
+              </div>
+            }
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>

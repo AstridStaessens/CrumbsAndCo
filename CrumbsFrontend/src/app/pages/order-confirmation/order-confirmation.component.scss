@@ -1,0 +1,67 @@
+.confirmation-page {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.confirmation-card {
+  background: white;
+  border-radius: 12px;
+  padding: 3rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+  text-align: center;
+  max-width: 480px;
+  width: 100%;
+
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: #666;
+    margin-bottom: 1rem;
+  }
+
+  .info-note {
+    font-size: 0.9rem;
+    color: #999;
+    margin-bottom: 2rem;
+  }
+}
+
+.success-icon {
+  font-size: 4rem;
+  color: #22c55e;
+  margin-bottom: 1rem;
+}
+
+.confirmation-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.account-btn, .back-btn {
+  display: inline-block;
+  padding: 0.875rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.account-btn {
+  background: #c8a96e;
+  color: white;
+
+  &:hover { background: #b8955a; }
+}
+
+.back-btn {
+  border: 2px solid #c8a96e;
+  color: #c8a96e;
+
+  &:hover { background: #f9f4ec; }
+}

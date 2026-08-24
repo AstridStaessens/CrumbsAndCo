@@ -1,0 +1,56 @@
+<div class="cart-overlay" [class.open]="isOpen" (click)="close.emit()"></div>
+
+<aside class="cart-sidebar" [class.open]="isOpen">
+  <div class="cart-header">
+    <h2>Jouw bestelling</h2>
+    <button class="close-btn" (click)="close.emit()" aria-label="Sluit winkelwagen">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="cart-body">
+    @if ((items$ | async)?.length === 0) {
+      <div class="cart-empty">
+        <p>Je bestelling is leeg</p>
+        <span>Voeg producten toe vanuit de webshop!</span>
+      </div>
+    } @else {
+      <div class="cart-items">
+        @for (item of items$ | async; track item.id) {
+          <div class="cart-item">
+            <img [src]="item.image" [alt]="item.name" class="cart-item-img" />
+            <div class="cart-item-details">
+              <p class="item-name">{{ item.name }}</p>
+              <p class="item-price">{{ item.price | currency:'EUR':'symbol':'1.2-2' }}</p>
+              <div class="item-controls">
+                <button (click)="updateQuantity(item, -1)" aria-label="Minder">−</button>
+                <span>{{ item.quantity }}</span>
+                <button (click)="updateQuantity(item, 1)" aria-label="Meer">+</button>
+                <button class="remove-btn" (click)="remove(item.id)" aria-label="Verwijder">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+                    <path d="M10 11v6"/><path d="M14 11v6"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <p class="item-total">{{ (item.price * item.quantity) | currency:'EUR':'symbol':'1.2-2' }}</p>
+          </div>
+        }
+      </div>
+
+      <div class="cart-footer">
+        <div class="subtotal-row">
+          <span>Subtotaal</span>
+          <strong>{{ subtotal$ | async | currency:'EUR':'symbol':'1.2-2' }}</strong>
+        </div>
+        <p class="pickup-note">Ophaling elke vrijdag · Bestelling sluit woensdag 23u59</p>
+        <button class="checkout-btn" (click)="checkout()">Bevestig bestelling</button>
+      </div>
+    }
+  </div>
+</aside>

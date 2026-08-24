@@ -1,0 +1,19 @@
+<div class="galerij-page">
+  <div class="page-hero">
+    <div class="container">
+      <h1>Onze creaties</h1>
+      <p>Een greep uit de taarten en gebak die we met liefde maakten voor onze klanten</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="gallery-grid">
+      @for (img of images; track img.id) {
+        <div class="gallery-item" [class.tall]="img.tall">
+          <img [src]="img.src" [alt]="img.alt" loading="lazy" />
+          <div class="gallery-caption">{{ img.caption }}</div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

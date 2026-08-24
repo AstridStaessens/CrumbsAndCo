@@ -1,0 +1,137 @@
+.account-page {
+  min-height: 80vh;
+  padding: 3rem 1rem;
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    margin: 2rem 0 1rem;
+  }
+}
+
+.user-info {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+
+  p {
+    margin: 0.4rem 0;
+  }
+}
+
+.no-orders {
+  color: #888;
+  text-align: center;
+  padding: 2rem;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.order-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid #eee;
+
+  .order-id {
+    font-weight: 700;
+  }
+
+  .order-date {
+    color: #888;
+    font-size: 0.9rem;
+  }
+}
+
+.order-status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  &.status-new { background: #e0e7ff; color: #4338ca; }
+  &.status-pending_payment { background: #fef3c7; color: #b45309; }
+  &.status-paid { background: #d1fae5; color: #047857; }
+  &.status-in_production { background: #dbeafe; color: #1d4ed8; }
+  &.status-ready { background: #e0e7ff; color: #4338ca; }
+  &.status-completed { background: #d1fae5; color: #047857; }
+  &.status-cancelled { background: #fee2e2; color: #b91c1c; }
+  &.status-refunded { background: #f3e8ff; color: #7e22ce; }
+}
+
+.order-line {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem 0;
+  font-size: 0.95rem;
+}
+
+.order-total {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.75rem;
+  margin-top: 0.5rem;
+  border-top: 1px solid #eee;
+  font-weight: 700;
+}
+
+.order-actions {
+  margin-top: 0.75rem;
+  text-align: right;
+}
+
+.cancel-btn {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover:not(:disabled) {
+    background: #fecaca;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.form-error {
+  background: #fdecea;
+  color: #b3261e;
+  border-radius: 8px;
+  padding: 0.9rem 1.1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}

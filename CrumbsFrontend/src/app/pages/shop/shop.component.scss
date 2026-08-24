@@ -1,0 +1,167 @@
+.shop-page {
+  min-height: 80vh;
+}
+
+.shop-hero {
+  background: #f9f7f4;
+  border-bottom: 1px solid #ede8e0;
+  padding: 3rem 1.5rem 2.5rem;
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #8b4513;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: #666;
+    font-size: 1rem;
+
+    strong {
+      color: #8b4513;
+    }
+  }
+}
+
+.cat-bar {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 1.75rem 0 0;
+}
+
+.cat-pill {
+  padding: 0.45rem 1.1rem;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #666;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+
+  &:hover {
+    border-color: #8b4513;
+    color: #8b4513;
+  }
+
+  &.active {
+    background: #8b4513;
+    color: #fff;
+    border-color: #8b4513;
+  }
+}
+
+.order-notice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  background: #fdf6ee;
+  border: 1px solid #f0d8b8;
+  border-radius: 8px;
+  padding: 0.85rem 1.25rem;
+  margin: 1.25rem 0 2rem;
+  font-size: 0.9rem;
+  color: #7a4a1e;
+
+  strong {
+    font-weight: 600;
+  }
+
+  a {
+    color: #8b4513;
+    font-weight: 500;
+  }
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+  padding-bottom: 4rem;
+}
+
+.product-card {
+  border: 1px solid #f0e8e0;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background: #fff;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+}
+
+.product-img-wrap img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  display: block;
+}
+
+.product-info {
+  padding: 1rem 1.1rem 1.1rem;
+}
+
+.product-category {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #aaa;
+  font-weight: 500;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 4px 0 6px;
+}
+
+p {
+  font-size: 0.875rem;
+  color: #888;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+
+.product-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #8b4513;
+}
+
+.add-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #8b4513;
+  color: white;
+  border: none;
+  padding: 0.45rem 0.9rem;
+  border-radius: 7px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #6d3410;
+  }
+}
+
+.no-products {
+  text-align: center;
+  color: #aaa;
+  padding: 4rem 0;
+}

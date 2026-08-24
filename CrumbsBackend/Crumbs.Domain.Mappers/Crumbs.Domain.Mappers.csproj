@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Crumbs.API.Contracts\Crumbs.API.Contracts.csproj" />
+    <ProjectReference Include="..\Crumbs.Domain.Models\Crumbs.Domain.Models.csproj" />
+    <ProjectReference Include="..\Crumbs.Persistence.Entities\Crumbs.Persistence.Entities.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,9 @@
+<Solution>
+  <Project Path="Crumbs.API.Contracts/Crumbs.API.Contracts.csproj" />
+  <Project Path="Crumbs.API/Crumbs.API.csproj" />
+  <Project Path="Crumbs.Domain.Mappers/Crumbs.Domain.Mappers.csproj" Id="f15b054e-8428-4f1b-810b-50bb90bf862d" />
+  <Project Path="Crumbs.Domain.Models/Crumbs.Domain.Models.csproj" />
+  <Project Path="Crumbs.Domain.Services/Crumbs.Domain.Services.csproj" />
+  <Project Path="Crumbs.Persistence.Entities/Crumbs.Persistence.Entities.csproj" />
+  <Project Path="Crumbs.Persistence/Crumbs.Persistence.csproj" />
+</Solution>

@@ -1,0 +1,167 @@
+<div class="opmaat-page">
+  <div class="page-hero">
+    <div class="container">
+      <h1>Bestelling op maat</h1>
+      <p>Taarten, cakes en andere specialiteiten volledig naar jouw wensen</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="opmaat-grid">
+
+      <!-- Form -->
+      <div class="form-card">
+        @if (!submitted) {
+          <h2>Jouw aanvraag</h2>
+          <p class="form-intro">Vul het formulier in en we nemen binnen 24u contact op. Specialiteiten moeten <strong>minstens 3 dagen op voorhand</strong> aangevraagd worden.</p>
+
+          <form (ngSubmit)="onSubmit()" #f="ngForm">
+            <div class="form-row">
+              <label for="naam">Naam *</label>
+              <input id="naam" type="text" name="naam" [(ngModel)]="form.naam" required placeholder="Jouw naam" />
+            </div>
+
+            <div class="form-row two-col">
+              <div>
+                <label for="email">E-mail *</label>
+                <input id="email" type="email" name="email" [(ngModel)]="form.email" required placeholder="jouw@email.be" />
+              </div>
+              <div>
+                <label for="telefoon">Telefoon</label>
+                <input id="telefoon" type="tel" name="telefoon" [(ngModel)]="form.telefoon" placeholder="+32 ..." />
+              </div>
+            </div>
+
+            <div class="form-row two-col">
+              <div>
+                <label for="type">Type bestelling *</label>
+                <select id="type" name="type" [(ngModel)]="form.type" required>
+                  <option value="" disabled>Kies een type...</option>
+                  <option value="verjaardag">Verjaardagstaart</option>
+                  <option value="bruiloft">Bruidstaart</option>
+                  <option value="evenement">Taart voor evenement</option>
+                  <option value="koeken">Koekendoos op maat</option>
+                  <option value="andere">Andere specialiteit</option>
+                </select>
+              </div>
+              <div>
+                <label for="datum">Gewenste ophaaldatum *</label>
+                <input id="datum" type="date" name="datum" [(ngModel)]="form.datum" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <label for="wensen">Jouw wensen *</label>
+              <textarea
+                id="wensen"
+                name="wensen"
+                [(ngModel)]="form.wensen"
+                required
+                rows="5"
+                placeholder="Aantal personen, smaken, kleuren, thema, allergieën...">
+              </textarea>
+            </div>
+
+            <div class="form-row">
+              <label>Inspiratiefoto (optioneel)</label>
+              <div class="upload-zone" (click)="fileInput.click()">
+                <input #fileInput type="file" accept="image/*" (change)="onFileChange($event)" style="display:none" />
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                  fill="none" stroke="#ba7517" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
+                </svg>
+                @if (form.fileName) {
+                  <p class="upload-name">{{ form.fileName }}</p>
+                } @else {
+                  <p class="upload-label">Klik om een foto te uploaden</p>
+                  <p class="upload-sub">JPG, PNG of HEIC · max. 10 MB</p>
+                }
+              </div>
+            </div>
+
+            <button type="submit" class="submit-btn" [disabled]="f.invalid || isLoading">
+              {{ isLoading ? 'Bezig met verzenden...' : 'Aanvraag versturen' }}
+            </button>
+
+            @if (error) {
+              <div class="form-error">
+                <p>{{ error }}</p>
+              </div>
+            }
+          </form>
+        } @else {
+          <div class="success-message">
+            <div class="success-icon">✓</div>
+            <h2>Aanvraag ontvangen!</h2>
+            <p>Bedankt, <strong>{{ form.naam }}</strong>! We nemen binnen 24u contact op via <strong>{{ form.email }}</strong> om alles te bespreken.</p>
+            <button class="btn-primary" (click)="resetForm()">Nieuwe aanvraag</button>
+          </div>
+        }
+      </div>
+
+      <!-- Info sidebar -->
+      <aside class="info-sidebar">
+        <div class="info-card">
+          <h3>Hoe werkt het?</h3>
+          <ol class="steps">
+            <li>
+              <span class="step-num">1</span>
+              <div>
+                <strong>Aanvraag indienen</strong>
+                <p>Vul het formulier in met jouw wensen en voeg eventueel een inspiratiefoto toe.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">2</span>
+              <div>
+                <strong>Offerte ontvangen</strong>
+                <p>Wij nemen binnen 24u contact op om alles te bespreken en een prijs op te maken.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">3</span>
+              <div>
+                <strong>Bevestiging & voorschot</strong>
+                <p>Na bevestiging betaal je een voorschot van 50% om de bestelling te reserveren.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">4</span>
+              <div>
+                <strong>Ophaling</strong>
+                <p>Jouw creatie wordt vers gebakken en is klaar op de afgesproken datum.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="info-card deadlines">
+          <h3>Minimum besteltermijnen</h3>
+          <div class="deadline-row">
+            <span class="deadline-type">Taarten & cakes op maat</span>
+            <span class="deadline-time">Min. 3 dagen</span>
+          </div>
+          <div class="deadline-row">
+            <span class="deadline-type">Bruidstaarten</span>
+            <span class="deadline-time">Min. 3 weken</span>
+          </div>
+          <div class="deadline-row">
+            <span class="deadline-type">Grote evenementen</span>
+            <span class="deadline-time">Min. 1 week</span>
+          </div>
+          <div class="deadline-row">
+            <span class="deadline-type">Koekendozen op maat</span>
+            <span class="deadline-time">Min. 5 dagen</span>
+          </div>
+        </div>
+
+        <img
+          src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&q=80"
+          alt="Taart op maat"
+          class="sidebar-img"
+        />
+      </aside>
+    </div>
+  </div>
+</div>

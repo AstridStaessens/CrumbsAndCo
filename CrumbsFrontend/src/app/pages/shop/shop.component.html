@@ -1,0 +1,76 @@
+<div class="shop-page">
+  <div class="shop-hero">
+    <div class="container">
+      <h1>Webshop</h1>
+      <p>Bestel voor <strong>woensdag 23u59</strong> — klaar voor ophaling op vrijdag</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Category filter -->
+    <div class="cat-bar">
+      <button
+        class="cat-pill"
+        [class.active]="selectedCategoryId === null"
+        (click)="selectCategory(null)">
+        Alles
+      </button>
+      @for (cat of categories; track cat.id) {
+        <button
+          class="cat-pill"
+          [class.active]="selectedCategoryId === cat.id"
+          (click)="selectCategory(cat.id)">
+          {{ cat.name }}
+        </button>
+      }
+    </div>
+
+    <!-- Order notice -->
+    <div class="order-notice">
+      <span>
+        <strong>Standaard:</strong> besteld voor woensdag 23u59 → ophaling vrijdag
+      </span>
+      <span>
+        <strong>Specialiteiten</strong> (taarten op maat...): min. 3 dagen op voorhand — <a routerLink="/op-maat">vraag het hier aan</a>
+      </span>
+    </div>
+
+    <!-- Loading -->
+    @if (isLoading) {
+      <p class="no-products">Producten laden...</p>
+    }
+
+    <!-- Products grid -->
+    @if (!isLoading) {
+      <div class="products-grid">
+        @for (product of filteredProducts; track product.id) {
+          <div class="product-card">
+            <div class="product-img-wrap">
+              <img [src]="product.imageUrl ?? 'assets/placeholder.png'" [alt]="product.name" />
+            </div>
+            <div class="product-info">
+              <span class="product-category">{{ product.categoryName }}</span>
+              <h3>{{ product.name }}</h3>
+              <p>{{ product.description }}</p>
+              <div class="product-footer">
+                <span class="product-price">{{ product.price | currency:'EUR':'symbol':'1.2-2' }}</span>
+                <button class="add-btn" (click)="addToCart(product)">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                  </svg>
+                  Toevoegen
+                </button>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+
+      @if (filteredProducts.length === 0) {
+        <p class="no-products">Geen producten gevonden in deze categorie.</p>
+      }
+    }
+  </div>
+</div>

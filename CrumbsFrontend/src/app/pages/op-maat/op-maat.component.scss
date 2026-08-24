@@ -1,0 +1,194 @@
+.opmaat-page { min-height: 80vh; }
+
+.page-hero {
+  background: #f9f7f4;
+  border-bottom: 1px solid #ede8e0;
+  padding: 3rem 1.5rem 2.5rem;
+  h1 { font-size: 2.5rem; font-weight: 700; color: #8b4513; margin-bottom: 0.5rem; }
+  p { color: #666; font-size: 1rem; }
+}
+
+.opmaat-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 3rem;
+  padding: 3rem 0 5rem;
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-card {
+  h2 { font-size: 1.5rem; font-weight: 600; color: #333; margin-bottom: 0.5rem; }
+}
+
+.form-intro {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 1.75rem;
+  line-height: 1.6;
+  strong { color: #8b4513; }
+}
+
+.form-row {
+  margin-bottom: 1.25rem;
+
+  label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #888;
+    margin-bottom: 5px;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 0.65rem 0.9rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #333;
+    background: #fff;
+    transition: border-color 0.2s;
+    font-family: inherit;
+
+    &:focus {
+      outline: none;
+      border-color: #8b4513;
+      box-shadow: 0 0 0 3px rgba(139,69,19,0.1);
+    }
+  }
+
+  textarea { resize: vertical; }
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+
+  @media (max-width: 600px) { grid-template-columns: 1fr; }
+}
+
+.upload-zone {
+  border: 2px dashed #f0c878;
+  border-radius: 10px;
+  background: #fffbf5;
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+
+  &:hover { border-color: #ba7517; background: #fff8ec; }
+}
+
+.upload-label { font-size: 0.9rem; color: #854f0b; font-weight: 500; margin-top: 8px; }
+.upload-sub { font-size: 0.8rem; color: #b38040; margin-top: 3px; }
+.upload-name { font-size: 0.9rem; color: #8b4513; font-weight: 500; margin-top: 8px; }
+
+.submit-btn {
+  width: 100%;
+  background: #8b4513;
+  color: white;
+  border: none;
+  padding: 0.9rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 0.5rem;
+
+  &:hover:not(:disabled) { background: #6d3410; }
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+}
+
+.form-error {
+  background: #fdecea;
+  color: #b3261e;
+  border-radius: 8px;
+  padding: 0.9rem 1.1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+.success-message {
+  text-align: center;
+  padding: 3rem 2rem;
+
+  .success-icon {
+    width: 64px; height: 64px;
+    background: #e8f5e9; color: #2e7d32;
+    border-radius: 50%; font-size: 2rem;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+  }
+
+  h2 { font-size: 1.5rem; color: #333; margin-bottom: 1rem; }
+  p { color: #666; line-height: 1.7; margin-bottom: 2rem; strong { color: #333; } }
+}
+
+/* Sidebar */
+.info-sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.info-card {
+  background: #f9f7f4;
+  border: 1px solid #ede8e0;
+  border-radius: 12px;
+  padding: 1.5rem;
+
+  h3 { font-size: 1rem; font-weight: 600; color: #8b4513; margin-bottom: 1.25rem; }
+}
+
+.steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+
+  li {
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
+  }
+}
+
+.step-num {
+  width: 28px; height: 28px;
+  background: #8b4513; color: #fff;
+  border-radius: 50%; font-size: 0.85rem;
+  font-weight: 700; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.steps strong { font-size: 0.9rem; color: #333; display: block; margin-bottom: 2px; }
+.steps p { font-size: 0.82rem; color: #888; line-height: 1.5; }
+
+.deadlines { }
+
+.deadline-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #ede8e0;
+  font-size: 0.875rem;
+
+  &:last-child { border-bottom: none; }
+}
+
+.deadline-type { color: #555; }
+.deadline-time { font-weight: 600; color: #8b4513; }
+
+.sidebar-img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+  max-height: 200px;
+  display: block;
+}
