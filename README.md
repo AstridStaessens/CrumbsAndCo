@@ -12,7 +12,7 @@ Artisanale bakkerij webshop gebouwd met Angular (frontend) en ASP.NET Core (back
 | Backend | ASP.NET Core Web API (.NET 10) |
 | Database | Azure SQL Server (SQL Server) |
 | Authenticatie | JWT tokens |
-| Betaling | Stripe |
+| Betaling | Mollie Payments |
 | Hosting DB | Azure SQL Database |
 | Hosting API | Azure App Service |
 | Hosting FE | Azure Static Web Apps |
